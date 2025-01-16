@@ -20,11 +20,11 @@ export function PokemonCard({name}:PokemonCardProps){
         <Link
         href={name}
         key={name+"Card"}
-        className = " group rounded-lg border border-transparent transition-colors hover:border-gray-400"
+        className = " group rounded-lg border border-transparent m-3 transition-colors hover:border-gray-400"
         >
         <Card>
         <CardHeader>
-            <CardTitle>{name}</CardTitle>
+            <CardTitle>{name.charAt(0).toUpperCase()+name.slice(1)}</CardTitle>
         </CardHeader>
         </Card>
         </Link>
