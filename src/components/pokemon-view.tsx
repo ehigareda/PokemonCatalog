@@ -3,18 +3,19 @@ import { useState } from "react";
 import { Label } from "./ui/label"
 import { Input } from "./ui/input"
 import { PokemonCard } from "./pokemon-card";
+import { Pokemon } from '@/lib/pokemonAPI';
 
 interface PokemonViewProps{
-    pokemonList: any
+    pokemonList: Pokemon[]
 }
 
 export function PokemonView({pokemonList} : PokemonViewProps){
     const [ searchInput, setSearchInput] = useState("");
     console.log(pokemonList);
     //filter text
-    const searchFilter = (pokemonList: any) => {
+    const searchFilter = (pokemonList: Pokemon[]) => {
         return pokemonList.filter(
-            (pokemon:any) => pokemon.name.toLowerCase().includes(searchInput.toLowerCase())
+            (pokemon:Pokemon) => pokemon.name.toLowerCase().includes(searchInput.toLowerCase())
         )
     }
     //save filtered array of objects
@@ -40,7 +41,7 @@ export function PokemonView({pokemonList} : PokemonViewProps){
         <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
             {filteredPokemonList.map((pokemon:any)=> {
                 return (
-                    <PokemonCard name={pokemon.name} />
+                    <PokemonCard key={pokemon.name + "View"} name={pokemon.name} />
                 )
             })}
         </div>
